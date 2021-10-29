@@ -13,10 +13,11 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import HeaderIcon from "./HeaderIcon";
 
 const Header = () => {
   return (
-    <div>
+    <div className='sticky flex items-center z-50 bg-white top-0 p-2 lg:px-5 shadow-md'>
       {/* Left Nav */}
       <div className='flex items-center'>
         <Image
@@ -34,12 +35,22 @@ const Header = () => {
             name='search'
             id='search'
             placeholder='Search Facebook'
-            className='flex ml-2 items-center bg-transparent outline-none placeholder-gray-500'
+            autoComplete='off'
+            className='flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink'
           />
         </div>
       </div>
 
       {/* Center Nav */}
+      <div className='flex justify-center flex-grow'>
+        <div className='flex space-x-6 md:space-x-2'>
+          <HeaderIcon active Icon={HomeIcon} />
+          <HeaderIcon Icon={FlagIcon} />
+          <HeaderIcon Icon={PlayIcon} />
+          <HeaderIcon Icon={ShoppingCartIcon} />
+          <HeaderIcon Icon={UserGroupIcon} />
+        </div>
+      </div>
 
       {/* Right Nav */}
     </div>
