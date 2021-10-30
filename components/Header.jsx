@@ -1,3 +1,4 @@
+import { signOut, useSession } from "next-auth/client";
 import Image from "next/image";
 import {
   BellIcon,
@@ -16,6 +17,8 @@ import {
 import HeaderIcon from "./HeaderIcon";
 
 const Header = () => {
+  const [session] = useSession();
+
   return (
     <div className='sticky flex items-center z-50 bg-white top-0 p-2 lg:px-5 shadow-md'>
       {/* Left Nav */}
@@ -36,7 +39,7 @@ const Header = () => {
             id='search'
             placeholder='Search Facebook'
             autoComplete='off'
-            className='flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink'
+            className='hidden md:inline-flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink'
           />
         </div>
       </div>
@@ -53,6 +56,24 @@ const Header = () => {
       </div>
 
       {/* Right Nav */}
+      <div className='flex items-center sm:space-x-2 justify-end'>
+        {/* Profile pic */}
+        <Image 
+          onClick={signOut}
+          className='rounded-full cursor-pointer'
+          src={session.user.image}
+          width='40'
+          height='40'
+          layout='fixed'
+          alt='User Profile Photo'
+        />
+
+        <p className='whitespace-nowrap font-semibold pr-3'>Handa</p>
+        <ViewGridIcon className='icon' />
+        <ChatIcon className='icon' />
+        <BellIcon className='icon' />
+        <ChevronDownIcon className='icon' />
+      </div>
     </div>
   );
 };
