@@ -19,6 +19,8 @@ import HeaderIcon from "./HeaderIcon";
 const Header = () => {
   const [session] = useSession();
 
+  const userFirstName = session.user.name.split(" ")[0];
+
   return (
     <div className='sticky flex items-center z-50 bg-white top-0 p-2 lg:px-5 shadow-md'>
       {/* Left Nav */}
@@ -69,7 +71,7 @@ const Header = () => {
         />
 
         <p className='whitespace-nowrap font-semibold pr-3'>
-          {session.user.name}
+          {userFirstName}
         </p>
         <ViewGridIcon className='icon' />
         <ChatIcon className='icon' />
