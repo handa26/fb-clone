@@ -1,5 +1,6 @@
 import Stories from "./Stories";
 import InputBox from "./InputBox";
+import Posts from "./Posts";
 
 // mx-auto max-w-md md:max-w-lg
 const Feed = () => {
@@ -13,6 +14,7 @@ const Feed = () => {
         <InputBox />
 
         {/* Posts */}
+        <Posts />
       </div>
     </div>
   );
